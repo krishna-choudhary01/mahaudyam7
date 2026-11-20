@@ -1,0 +1,64 @@
+.welcome-banner {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, #ffffff 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.welcome-banner__title {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  line-height: 1.2;
+  margin-bottom: var(--space-xs);
+}
+
+.welcome-banner__subtitle {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+  line-height: 1.35;
+}
+
+.welcome-banner__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--space-md);
+}
+
+.welcome-banner__location-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  background-color: #ffffff;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  max-width: 440px;
+}
+
+.location-selector__label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.location-selector__select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: var(--font-size-sm);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  min-height: 44px; /* Touch target */
+  cursor: pointer;
+}
+
+.location-selector__select:focus {
+  outline: 2px solid var(--color-primary);
+  border-color: var(--color-primary);
+}

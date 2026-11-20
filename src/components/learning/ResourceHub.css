@@ -1,0 +1,287 @@
+/**
+ * Resource Hub Stylesheet
+ * High-contrast, sunlight-readable, touch-optimized (>= 44px) for rural Android devices.
+ */
+
+.resource-hub-module {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  color: #1b3815;
+  font-family: inherit;
+}
+
+.hub-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  background: #f4f7f2;
+  padding: 0.4rem;
+  border-radius: 10px;
+  border: 1px solid #d2dec9;
+}
+
+.hub-tabs .tab-btn {
+  flex: 1;
+  min-width: 180px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #496342;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hub-tabs .tab-btn.active {
+  background: #1b5e20 !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(27, 94, 32, 0.3);
+}
+
+.res-agency-badge {
+  font-size: 0.8rem;
+  color: #556c4e;
+  font-weight: 600;
+}
+
+.subsidy-highlight-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.5rem;
+  background: #fdfbf5;
+  border: 1px solid #fae8b4;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.sub-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.sub-lbl {
+  font-size: 0.75rem;
+  color: #7d6b38;
+  font-weight: 600;
+}
+
+.sub-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #8c6000;
+}
+
+.doc-checklist-box {
+  background: #f9fbf8;
+  border: 1px solid #e2ecd9;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.doc-lbl {
+  font-weight: 700;
+  color: #33442f;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.doc-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #556c4e;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.btn-external-link {
+  flex: 1;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  background: #f0f4ec;
+  color: #1b3815;
+  border: 1px solid #b8cbac;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.btn-apply-check {
+  flex: 1;
+  min-height: 44px;
+  background: #276722;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* Launch Progress Tracker */
+.progress-badge-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #eaf3e6;
+  border: 1px solid #c2dbb9;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.prog-percent {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #276722;
+}
+
+.prog-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #556c4e;
+}
+
+.launch-progress-bar-wrap {
+  width: 100%;
+  height: 12px;
+  background: #e2ecd9;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.launch-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #48bb78, #276722);
+  transition: width 0.4s ease;
+}
+
+.milestones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.milestone-card {
+  background: #ffffff;
+  border: 1px solid #d2dec9;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: all 0.2s ease;
+}
+
+.milestone-card.milestone-completed {
+  background: #f7fcf7;
+  border-color: #a7d9a9;
+}
+
+.btn-toggle-step {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #b8cbac;
+  background: #ffffff;
+  color: #33442f;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.btn-toggle-step.checked {
+  background: #276722;
+  color: #ffffff;
+  border-color: #276722;
+}
+
+.ms-content-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ms-header-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ms-step-tag {
+  background: #f0f4ec;
+  color: #276722;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.ms-title {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #1b3815;
+}
+
+.ms-desc {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #556c4e;
+  line-height: 1.4;
+}
+
+.ms-notes-section {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.ms-note-input {
+  flex: 1;
+  min-height: 38px;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid #d2dec9;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  background: #fff;
+}
+
+.btn-save-note {
+  min-height: 38px;
+  padding: 0.35rem 0.75rem;
+  background: #f0f4ec;
+  border: 1px solid #b8cbac;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-save-note:hover {
+  background: #e2ecd9;
+}

@@ -1,0 +1,47 @@
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+  user-select: none;
+  min-height: var(--touch-target-min);
+}
+
+.app-btn:active {
+  transform: translateY(1px);
+}
+
+.app-btn--primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.app-btn--primary:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+}
+
+.app-btn--accent {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.app-btn--outline {
+  background-color: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.app-btn--outline:hover:not(:disabled) {
+  background-color: #f0f4f0;
+}
+
+.app-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

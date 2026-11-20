@@ -1,0 +1,105 @@
+.location-hierarchy {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-top: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.location-hierarchy__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid #f0f3f0;
+}
+
+.location-state-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+  flex-wrap: wrap;
+}
+
+.state-badge {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.state-stats {
+  color: var(--color-text-muted);
+  font-size: 11px;
+}
+
+.location-cache-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--color-online-bg);
+  color: var(--color-online);
+  border: 1px solid rgba(46, 125, 50, 0.2);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.location-selectors-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 680px) {
+  .location-selectors-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.selector-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.location-summary-card {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-bg);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.summary-values {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.summary-crumb strong {
+  color: var(--color-text-primary);
+}
+
+.summary-arrow {
+  color: var(--color-accent);
+  font-weight: 800;
+}

@@ -1,0 +1,87 @@
+/* MahaUdyam LogoutConfirmModal CSS */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.logout-modal {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #d1d5db);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.75rem 1.5rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.logout-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffebee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem auto;
+}
+
+.logout-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+}
+
+.logout-desc {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.5;
+  margin: 0 0 1.5rem 0;
+  text-align: left;
+  background: #f9fafb;
+  padding: 0.85rem;
+  border-radius: var(--radius-md, 8px);
+  border-left: 3px solid #c62828;
+}
+
+.logout-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 440px) {
+  .logout-actions {
+    flex-direction: row-reverse;
+  }
+}
+
+.logout-confirm-btn {
+  background-color: #c62828 !important;
+  color: #ffffff !important;
+  border-color: #b71c1c !important;
+  min-height: 44px;
+  flex: 1;
+}
+
+.logout-confirm-btn:hover {
+  background-color: #b71c1c !important;
+}
+
+.logout-cancel-btn {
+  min-height: 44px;
+  flex: 1;
+}

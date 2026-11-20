@@ -1,0 +1,64 @@
+@import './variables.css';
+
+/* Box sizing and minimal reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Ensure mobile interactive elements meet touch target minimum */
+button, a, input, select, textarea {
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  min-height: var(--touch-target-min);
+}
+
+/* Accessible focus ring */
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Base utility classes */
+.container {
+  width: 100%;
+  max-width: 768px; /* Mobile / tablet optimized column */
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

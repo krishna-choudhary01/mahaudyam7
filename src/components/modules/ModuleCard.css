@@ -1,0 +1,111 @@
+.module-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.module-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.module-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+.module-card__icon-wrap {
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-primary-light);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.module-card__category {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+}
+
+.module-card__body {
+  flex: 1;
+  margin-bottom: var(--space-md);
+}
+
+.module-card__title-group {
+  margin-bottom: var(--space-xs);
+}
+
+.module-card__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.25;
+}
+
+.module-card__marathi {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--color-primary-dark);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.module-card__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+  margin-top: var(--space-xs);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 4.2em;
+}
+
+.module-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid #f0f3f0;
+}
+
+.module-card__badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-accent);
+  background-color: var(--color-accent-light);
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.module-card__badge--flagship {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.module-card__btn {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  padding: 8px 14px;
+  min-height: 44px; /* Strict 44px touch compliance */
+}

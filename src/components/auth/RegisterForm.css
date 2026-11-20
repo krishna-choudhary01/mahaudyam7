@@ -1,0 +1,116 @@
+.auth-notice-banner {
+  background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+  border: 1.5px solid #ffb74d;
+  border-left: 6px solid #e65100;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.auth-notice-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.auth-notice-content strong {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #bf360c;
+  margin-bottom: 2px;
+}
+
+.auth-notice-content p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #4e342e;
+  line-height: 1.4;
+}
+
+.lang-radio-group {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.lang-radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px; /* Touch target */
+  transition: all 0.15s ease;
+}
+
+.lang-radio-label input {
+  min-height: auto;
+  cursor: pointer;
+}
+
+.lang-radio--active {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 480px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.reg-location-group {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+  margin-top: 4px;
+}
+
+.location-group-title {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.location-inputs-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-input--error,
+.input-with-prefix--error,
+.input-with-action--error .form-input {
+  border-color: #c62828 !important;
+  background-color: #fff8f8;
+}
+
+.form-field-error-msg {
+  font-size: 11px;
+  font-weight: 600;
+  color: #c62828;
+  margin-top: 2px;
+}

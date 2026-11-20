@@ -1,0 +1,302 @@
+/* Citizen & Guest Home Page View */
+
+.citizen-guest-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+/* 1. Citizen Need Reporting Card */
+.citizen-hero-card {
+  background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+  border: 2px solid #81c784;
+  border-left: 8px solid #2e7d32;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 600px) {
+  .citizen-hero-card {
+    padding: var(--space-lg);
+  }
+}
+
+.citizen-hero-card__badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #1b5e20;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.citizen-hero-card__tag {
+  background-color: #2e7d32;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.citizen-hero-card__title {
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: #1b381b;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.citizen-hero-card__desc {
+  font-size: var(--font-size-sm);
+  color: #2e442e;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.citizen-hero-card__actions {
+  margin-top: var(--space-xs);
+}
+
+.btn-report-need {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #1b5e20;
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 12px 24px;
+  font-size: var(--font-size-base);
+  font-weight: 800;
+  cursor: pointer;
+  min-height: 48px;
+  box-shadow: 0 4px 10px rgba(27, 94, 32, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-report-need:hover {
+  background-color: #0e3b12;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(27, 94, 32, 0.4);
+}
+
+.btn-report-need:focus-visible {
+  outline: 3px solid #66bb6a;
+  outline-offset: 2px;
+}
+
+.btn-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.btn-report-need:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* 2. Entrepreneur Gate Section */
+.entrepreneur-gate-section {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 600px) {
+  .entrepreneur-gate-section {
+    padding: var(--space-lg);
+  }
+}
+
+.entrepreneur-gate-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--space-lg) auto;
+}
+
+.gate-badge {
+  display: inline-block;
+  background-color: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ffe0b2;
+  border-radius: 16px;
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.entrepreneur-gate-title {
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin: 0 0 var(--space-xs) 0;
+  line-height: 1.3;
+}
+
+.entrepreneur-gate-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0 0 var(--space-md) 0;
+}
+
+.entrepreneur-gate-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.btn-gate-register {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  cursor: pointer;
+  min-height: 46px;
+  box-shadow: 0 3px 8px rgba(46, 125, 50, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-gate-register:hover {
+  background: linear-gradient(135deg, #1b5e20, #0e3b12);
+  transform: translateY(-1px);
+}
+
+.btn-gate-login {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #1b5e20;
+  border: 1.5px solid #1b5e20;
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  cursor: pointer;
+  min-height: 46px;
+  transition: all 0.2s ease;
+}
+
+.btn-gate-login:hover {
+  background-color: #e8f5e9;
+}
+
+/* Locked Modules Preview Grid */
+.locked-modules-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 640px) {
+  .locked-modules-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.locked-module-card {
+  background-color: #fafbfa;
+  border: 1px dashed #c8e6c9;
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  min-height: 120px;
+}
+
+.locked-module-card:hover {
+  border-color: #2e7d32;
+  border-style: solid;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.1);
+  transform: translateY(-2px);
+}
+
+.locked-module-card:focus-visible {
+  outline: 2px solid #2e7d32;
+}
+
+.locked-module-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+}
+
+.locked-module-card__icon-box {
+  width: 32px;
+  height: 32px;
+  background-color: #e8f5e9;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.locked-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #c62828;
+  background-color: #ffebee;
+  border: 1px solid #ffcdd2;
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+
+.locked-module-card__title {
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  color: #1b381b;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.locked-module-card__desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.locked-module-card__footer {
+  margin-top: 4px;
+}
+
+.locked-unlock-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2e7d32;
+  transition: color 0.15s ease;
+}
+
+.locked-module-card:hover .locked-unlock-text {
+  color: #0e3b12;
+  text-decoration: underline;
+}

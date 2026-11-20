@@ -1,0 +1,187 @@
+.admin-login-card {
+  max-width: 480px;
+  margin: var(--space-xl) auto;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #d0d7d0);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.admin-login-header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.admin-badge-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--space-md);
+  background-color: var(--color-primary-light, #e8f5e9);
+  color: var(--color-primary, #1b5e20);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-login-title {
+  font-size: var(--font-size-xl, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text-primary, #1a201c);
+  margin-bottom: var(--space-xs);
+}
+
+.admin-login-sub {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-secondary, #4a554e);
+  line-height: 1.4;
+}
+
+.admin-alert {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm, 6px);
+  font-size: var(--font-size-sm, 0.875rem);
+  margin-bottom: var(--space-md);
+}
+
+.admin-alert--error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.admin-alert--info {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #c8e6c9;
+}
+
+.admin-form-group {
+  margin-bottom: var(--space-md);
+}
+
+.admin-label {
+  display: block;
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--color-text-primary, #1a201c);
+  margin-bottom: var(--space-xs);
+}
+
+.admin-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.admin-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 var(--space-md);
+  font-size: var(--font-size-base, 1rem);
+  border: 1px solid var(--color-border, #d0d7d0);
+  border-radius: var(--radius-sm, 6px);
+  background-color: #fafbfa;
+  color: var(--color-text-primary, #1a201c);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-input:focus {
+  outline: none;
+  border-color: var(--color-primary, #1b5e20);
+  box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.15);
+  background-color: #ffffff;
+}
+
+.admin-input-btn {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted, #6e7a72);
+  cursor: pointer;
+  padding: 4px 8px;
+  min-height: 32px;
+  font-size: var(--font-size-xs, 0.75rem);
+}
+
+.admin-submit-btn {
+  width: 100%;
+  min-height: 48px;
+  font-size: var(--font-size-base, 1rem);
+  font-weight: 600;
+  margin-top: var(--space-sm);
+  background-color: var(--color-primary, #1b5e20);
+  color: #ffffff;
+}
+
+.admin-security-banner {
+  margin-top: var(--space-lg);
+  padding: var(--space-sm) var(--space-md);
+  background-color: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: var(--radius-sm, 6px);
+  font-size: var(--font-size-xs, 0.75rem);
+  color: #795548;
+  display: flex;
+  gap: var(--space-xs);
+  line-height: 1.4;
+}
+
+.admin-demo-box {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background-color: #f1f8e9;
+  border: 1px dashed #aed581;
+  border-radius: var(--radius-sm, 6px);
+  font-size: var(--font-size-xs, 0.75rem);
+}
+
+.admin-demo-box strong {
+  display: block;
+  margin-bottom: var(--space-xs);
+  color: var(--color-primary-dark, #0f3d14);
+}
+
+.demo-account-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+}
+
+.demo-chip-btn {
+  background-color: #ffffff;
+  border: 1px solid #c5e1a5;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  color: var(--color-primary-dark, #0f3d14);
+  cursor: pointer;
+  min-height: 28px;
+}
+
+.demo-chip-btn:hover {
+  background-color: var(--color-primary-light, #e8f5e9);
+  border-color: var(--color-primary, #1b5e20);
+}
+
+.admin-back-btn {
+  width: 100%;
+  margin-top: var(--space-md);
+  background: transparent;
+  border: none;
+  color: var(--color-primary, #1b5e20);
+  cursor: pointer;
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline;
+}
