@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
-import { handleApiRequest } from './server/index.js';
 
 function mahaUdyamApiPlugin() {
   return {
@@ -12,6 +11,7 @@ function mahaUdyamApiPlugin() {
         const pathname = rawUrl.split('?')[0];
         if (pathname.startsWith('/api/') || pathname === '/api') {
           try {
+            const { handleApiRequest } = await import('./server/index.js');
             const handled = await handleApiRequest(req, res);
             if (!handled) next();
           } catch (err) {

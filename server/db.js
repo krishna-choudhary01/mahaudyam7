@@ -6,10 +6,18 @@
  * Includes automatic table migrations, indexing, and seed initialization for Demo accounts.
  */
 
-import { DatabaseSync } from 'node:sqlite';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+
+let DatabaseSync = null;
+try {
+  const sqlite = await import('node:sqlite');
+  DatabaseSync = sqlite.DatabaseSync;
+} catch (e) {
+  // node:sqlite is only available in Node.js >= 22.5.0
+  // Graceful fallback is activated below for older runtimes (e.g. Node 18/20)
+}
 
 const DATA_DIR = path.resolve(process.cwd(), 'server', 'data');
 if (!fs.existsSync(DATA_DIR)) {
@@ -18,10 +26,152 @@ if (!fs.existsSync(DATA_DIR)) {
 
 const DB_PATH = path.join(DATA_DIR, 'mahaudyam.db');
 
+class FallbackDatabase {
+  constructor(filePath) {
+    this.filePath = filePath;
+    this.data = {
+      users: new Map(),
+      sessions: new Map(),
+      sync_records: new Map(),
+      sync_meta: new Map([['current_revision', '0']]),
+      idempotency_keys: new Map()
+    };
+    this.load();
+  }
+
+  load() {
+    try {
+      if (fs.existsSync(this.filePath)) {
+        const raw = JSON.parse(fs.readFileSync(this.filePath, 'utf-8'));
+        if (raw.users) this.data.users = new Map(Object.entries(raw.users));
+        if (raw.sessions) this.data.sessions = new Map(Object.entries(raw.sessions));
+        if (raw.sync_records) this.data.sync_records = new Map(Object.entries(raw.sync_records));
+        if (raw.sync_meta) this.data.sync_meta = new Map(Object.entries(raw.sync_meta));
+        if (raw.idempotency_keys) this.data.idempotency_keys = new Map(Object.entries(raw.idempotency_keys));
+      }
+    } catch (e) {
+      console.warn('[FallbackDatabase] Could not load persisted data:', e.message);
+    }
+  }
+
+  save() {
+    try {
+      const serialized = {
+        users: Object.fromEntries(this.data.users),
+        sessions: Object.fromEntries(this.data.sessions),
+        sync_records: Object.fromEntries(this.data.sync_records),
+        sync_meta: Object.fromEntries(this.data.sync_meta),
+        idempotency_keys: Object.fromEntries(this.data.idempotency_keys)
+      };
+      fs.writeFileSync(this.filePath, JSON.stringify(serialized, null, 2), 'utf-8');
+    } catch (e) {
+      console.warn('[FallbackDatabase] Could not save data:', e.message);
+    }
+  }
+
+  exec(sql) {
+    // PRAGMAs, CREATE TABLEs, BEGIN, COMMIT, ROLLBACK are no-ops for in-memory/JSON store
+  }
+
+  prepare(sql) {
+    const trimmed = sql.trim().replace(/\s+/g, ' ');
+    const self = this;
+
+    return {
+      run(...params) {
+        if (trimmed.includes('INSERT INTO users')) {
+          const [user_id, mobile, password_hash, name, preferred_language, district_code, taluka_code, village_code, role, created_at, updated_at] = params;
+          self.data.users.set(user_id, { user_id, mobile, password_hash, name, preferred_language, district_code, taluka_code, village_code, role, created_at, updated_at });
+          self.save();
+        } else if (trimmed.includes('INSERT INTO sessions')) {
+          const [session_id, user_id, token, expires_at, created_at] = params;
+          self.data.sessions.set(session_id, { session_id, user_id, token, expires_at, created_at });
+          self.save();
+        } else if (trimmed.includes('DELETE FROM sessions WHERE session_id = ?')) {
+          self.data.sessions.delete(params[0]);
+          self.save();
+        } else if (trimmed.includes('UPDATE sync_meta SET val = ?')) {
+          self.data.sync_meta.set('current_revision', String(params[0]));
+          self.save();
+        } else if (trimmed.includes('INSERT INTO sync_meta')) {
+          self.data.sync_meta.set(params[0], String(params[1]));
+          self.save();
+        } else if (trimmed.includes('INSERT INTO sync_records')) {
+          const [id, user_id, store_name, record_id, is_shared, payload_json, revision, is_deleted, updated_at, created_at] = params;
+          self.data.sync_records.set(id, { id, user_id, store_name, record_id, is_shared, payload_json, revision, is_deleted, updated_at, created_at });
+          self.save();
+        } else if (trimmed.includes('INSERT OR REPLACE INTO idempotency_keys')) {
+          const [idempotency_key, user_id, result_json, created_at] = params;
+          self.data.idempotency_keys.set(idempotency_key, { idempotency_key, user_id, result_json, created_at });
+          self.save();
+        }
+        return { changes: 1 };
+      },
+
+      get(...params) {
+        if (trimmed.includes('SELECT val FROM sync_meta WHERE key =')) {
+          const val = self.data.sync_meta.get('current_revision') || '0';
+          return { val };
+        } else if (trimmed.includes('SELECT user_id FROM users WHERE mobile = ?')) {
+          for (const u of self.data.users.values()) {
+            if (u.mobile === params[0]) return { user_id: u.user_id };
+          }
+          return null;
+        } else if (trimmed.includes('SELECT * FROM users WHERE mobile = ?')) {
+          for (const u of self.data.users.values()) {
+            if (u.mobile === params[0]) return { ...u };
+          }
+          return null;
+        } else if (trimmed.includes('SELECT * FROM users WHERE user_id = ?')) {
+          const u = self.data.users.get(params[0]);
+          return u ? { ...u } : null;
+        } else if (trimmed.includes('SELECT s.*, u.name, u.mobile')) {
+          const token = params[0];
+          for (const s of self.data.sessions.values()) {
+            if (s.token === token) {
+              const u = self.data.users.get(s.user_id) || {};
+              return { ...s, ...u };
+            }
+          }
+          return null;
+        } else if (trimmed.includes('SELECT result_json FROM idempotency_keys')) {
+          const item = self.data.idempotency_keys.get(params[0]);
+          if (item && item.user_id === params[1]) return { result_json: item.result_json };
+          return null;
+        }
+        return null;
+      },
+
+      all(...params) {
+        if (trimmed.includes('SELECT * FROM sync_records WHERE')) {
+          const [userId, cursor] = params;
+          const minRev = Number(cursor);
+          const results = [];
+          for (const r of self.data.sync_records.values()) {
+            if ((r.user_id === userId || r.is_shared === 1) && Number(r.revision) > minRev) {
+              results.push({ ...r });
+            }
+          }
+          results.sort((a, b) => Number(a.revision) - Number(b.revision));
+          return results.slice(0, 200);
+        }
+        return [];
+      }
+    };
+  }
+
+  close() {}
+}
+
 export class ServerDatabase {
   constructor(dbFilePath = DB_PATH) {
     this.dbFilePath = dbFilePath;
-    this.sqlite = new DatabaseSync(dbFilePath);
+    if (DatabaseSync) {
+      this.sqlite = new DatabaseSync(dbFilePath);
+    } else {
+      console.warn('[ServerDB] node:sqlite not available in this Node runtime (' + process.version + '). Using resilient JSON store fallback.');
+      this.sqlite = new FallbackDatabase(path.join(DATA_DIR, 'mahaudyam_store.json'));
+    }
     this.initSchema();
   }
 
